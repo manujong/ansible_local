@@ -1,0 +1,9 @@
+---
+
+- hosts: debian_hosts
+
+  become: yes
+
+  roles:
+    - update
+    - default_packages

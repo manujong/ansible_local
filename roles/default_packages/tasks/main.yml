@@ -1,0 +1,7 @@
+---
+
+- name: Install VIM package
+  apt: name=vim state=latest
+
+- name: Install Sysinfo package
+  apt: name=sysinfo state=latest
