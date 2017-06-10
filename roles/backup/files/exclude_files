@@ -1,0 +1,2 @@
+# Exclude pattern (refer to --exclude-from from rsync man page)
+exclude		/home/manu/Vidéos

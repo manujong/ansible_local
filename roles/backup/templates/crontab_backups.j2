@@ -1,0 +1,7 @@
+# CRON backup desktop
+
+
+@reboot rsnapshot -c {{ root_backup }}/rsnapshot.conf sync && rsnapshot -c {{ root_backup }}/rsnapshot.conf daily
+@reboot rsnapshot -c {{ root_backup }}/rsnapshot.conf weekly
+@reboot rsnapshot -c {{ root_backup }}/rsnapshot.conf monthly
+

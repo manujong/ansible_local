@@ -1,0 +1,54 @@
+---
+- name: Installation de rsnapshot
+  apt:
+    name: rsnapshot
+    state: present
+  tags:
+  - backup
+
+- name: Installation de la config globale rsnapshot
+  copy:
+    src: rsnapshot-common.conf
+    dest: /etc/rsnapshot-common.conf
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+  - backup
+  
+- name: Création du répertoire racine des backups
+  file:
+    path: "{{ root_backup }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  tags:
+  - backup
+
+- name: Création du fichier de configuration rsnapshot pour la machine locale
+  template:
+    src: rsnapshot.conf.j2
+    dest: "{{ root_backup }}/rsnapshot.conf"
+  tags:
+  - backup
+
+- name: Installation du fichier d'exclusion 
+  copy:
+    src: exclude_files
+    dest: "{{ root_backup }}/exclude_files"
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+  - backup
+    
+- name: Installation des tâches CRON de sauvegarde
+  template:
+    src: crontab_backups.j2
+    dest: /etc/cron.d/crontab_backups
+    owner: root
+    group: root
+    mode: 0640
+  tags:
+  - backup

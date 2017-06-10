@@ -1,0 +1,16 @@
+---
+- name: Update packages
+  apt:
+    update_cache: yes
+    upgrade: dist
+    autoremove: yes
+  register: output
+
+- name: Check changes
+  set_fact:
+    updated: true
+  when: not output.stdout | search("0 upgraded, 0 newly installed")
+
+- name: Display changes
+  debug:
+    msg: "{{ output.stdout_lines }}"

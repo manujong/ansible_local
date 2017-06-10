@@ -5,3 +5,25 @@
 
 - name: Install Mplayer
   apt: name=mplayer state=latest
+
+- name: Install Gaupol subtitles
+  apt: name=gaupol  state=latest
+
+- name: Install NPM for popcorntime
+  apt: name=npm  state=latest
+
+- name: Install sound-juicer rip
+  apt: name=sound-juicer state=latest
+
+- name: Install cmus command line audio player
+  apt: name=cmus state=latest
+
+- name: Install owncloud client
+  apt: name=owncloud-client state=latest
+
+- name: Install ncmpcpp command line audio player for MPD
+  apt: name=ncmpcpp state=latest
+
+- name: Install gmpc GNOME Music Player Client (graphical interface to MPD)
+  apt: name=gmpc state=latest
+

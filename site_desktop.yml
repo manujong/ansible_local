@@ -1,9 +1,0 @@
----
-
-- hosts: localhost
-
-  become: yes
-
-  roles:
-    - update
-    - desktop_packages

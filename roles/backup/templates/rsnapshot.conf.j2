@@ -1,0 +1,17 @@
+include_conf	/etc/rsnapshot-common.conf
+
+#ssh_args	-p 8080
+
+snapshot_root	{{ root_backup }}/
+
+#interval	hourly	24
+interval	daily	7
+interval	weekly	4
+interval	monthly	2
+
+logfile		{{ root_backup }}/rsnapshot.log
+lockfile	{{ root_backup }}/rsnapshot.pid
+
+exclude_file	{{ root_backup }}/exclude_files
+
+backup		/home/	./
