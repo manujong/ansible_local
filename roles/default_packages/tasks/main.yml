@@ -9,3 +9,5 @@
 - name: Install Command-not-found package
   apt: name=command-not-found state=latest
 
+- name: Install ntp package
+  apt: name=ntp state=latest

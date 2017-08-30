@@ -1,4 +1,6 @@
 ---
+- name: Install VIM gnome package
+  apt: name=vim-gnome state=latest
 
 - name: Install Chromium web browser
   apt: name=chromium-browser state=latest
@@ -27,3 +29,21 @@
 - name: Install gmpc GNOME Music Player Client (graphical interface to MPD)
   apt: name=gmpc state=latest
 
+- name: Install calibre library tool
+  apt: name=calibre state=latest
+
+- name: Install latex full installation
+  apt: name={{item}} state=latest
+  with_items:
+    - texlive-full
+    - texlive-latex-extra
+    - vim-addon-manager
+
+- name: Install texmaker latex editor
+  apt: name=texmaker state=latest
+
+- name: Install vim latex suite
+  apt: name=vim-latexsuite state=latest
+
+- name: Finish vim latex suite activation
+  command:  vim-addons -w install latex-suite
