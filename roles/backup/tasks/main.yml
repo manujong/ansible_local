@@ -1,4 +1,8 @@
 ---
+
+#- include: mount-backup-hd.yml
+  #- include: anacron-conf-backup.yml
+
 - name: Installation de rsnapshot
   apt:
     name: rsnapshot
@@ -15,7 +19,7 @@
     mode: 0644
   tags:
   - backup
-  
+
 - name: Création du répertoire racine des backups
   file:
     path: "{{ root_backup }}"
@@ -33,7 +37,7 @@
   tags:
   - backup
 
-- name: Installation du fichier d'exclusion 
+- name: Installation du fichier d'exclusion
   copy:
     src: exclude_files
     dest: "{{ root_backup }}/exclude_files"
@@ -42,13 +46,13 @@
     mode: 0644
   tags:
   - backup
-    
-- name: Installation des tâches CRON de sauvegarde
-  template:
-    src: crontab_backups.j2
-    dest: /etc/cron.d/crontab_backups
-    owner: root
-    group: root
-    mode: 0640
-  tags:
-  - backup
+
+  #- name: Installation des tâches CRON de sauvegarde
+  #template:
+  #  src: crontab_backups.j2
+  #  dest: /etc/cron.d/crontab_backups
+  #  owner: root
+  #  group: root
+  #  mode: 0640
+  #tags:
+  #- backup

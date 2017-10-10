@@ -1,0 +1,7 @@
+- name: Mount up backup device by UUID at startup (fstab)
+  mount:
+    path: /media/manu/SAVE_MANU/
+    src: UUID=0af88544-3ade-4fa0-bcd4-0ef43ec165c9
+    fstype: ext4
+    opts: rw,nosuid,nodev,relatime,data=ordered,uhelper=udisks2
+    state: present

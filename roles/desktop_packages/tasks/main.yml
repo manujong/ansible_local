@@ -47,3 +47,6 @@
 
 - name: Finish vim latex suite activation
   command:  vim-addons -w install latex-suite
+
+- name: Install lilypond for music
+  apt: name=lilypond state=latest

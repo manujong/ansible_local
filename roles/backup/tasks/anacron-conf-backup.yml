@@ -1,0 +1,8 @@
+- name: Insert anacron configuration in /etc/anacrontab
+  blockinfile:
+    path: /etc/anacrontab
+    block: |
+        @daily 10 dailybackup rsnapshot -c {{ root_backup }}/rsnapshot.conf sync && rsnapshot -c {{ root_backup }}/rsnapshot.conf daily
+        @weekly 10  weeklybackup rsnapshot -c {{ root_backup }}/rsnapshot.conf weekly
+        @monthly 10 monthlybackup rsnapshot -c {{ root_backup }}/rsnapshot.conf monthly
+    backup: yes
