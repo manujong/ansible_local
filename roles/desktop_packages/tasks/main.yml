@@ -50,3 +50,14 @@
 
 - name: Install lilypond for music
   apt: name=lilypond state=latest
+
+  #- name: Install PPA repository nextcloud
+  #apt_repository:
+  # repo: deb http://ppa.launchpad.net/nextcloud-devs/client/ubuntu xenial main
+  #  state: present
+
+  #- name: Install nextcloud client
+  #apt: name=nextcloud-client state=latest
+
+- name: Install ffmpeg
+  apt: name=ffmpeg state=latest
